@@ -16,5 +16,16 @@
 		"translate_tabs_to_spaces": true,
 		"trim_trailing_white_space_on_save": true
 	},
-	"virtualenv": "/home/nemsys/projects/courses/ProgressBG/ProgressBG-VMware-Python-Slides/.venv"
+	// "virtualenv": "/home/nemsys/projects/courses/ProgressBG/ProgressBG-VMware-Python-Slides/.venv",
+	"build_systems": [
+  {
+   	"name": "PythonCodePipenv",
+   	"file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
+   	"selector": "source.python",
+   	"shell_cmd": "/home/nemsys/projects/courses/ProgressBG/ProgressBG-VMware-Python/ProgressBG-VMware-Python-Code/.venv/bin/bpython -u \"$file\"",
+   	// "target": "ansi_color_build",
+		// "syntax": "Packages/ANSIescape/ANSI.tmLanguage",
+		// "env": {"CLICOLOR_FORCE": "1"},
+  }
+ ]
 }

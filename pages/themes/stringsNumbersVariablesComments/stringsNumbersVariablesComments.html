@@ -30,7 +30,7 @@
 			<a class="home_link" href="/ProgressBG-VMware-Python-Slides/pages/agenda/agenda.html#Course_Intro" target="_top"><i class="fa fa-home"></i></a>
 			<span class="help_link" href="#"><i class="fa fa-question"></i></span>
 			<div class="help_text">
-        <div><span>N/Спейс</span><span>next slide</span></div>
+        <div><span>N/Space</span><span>next slide</span></div>
         <div><span>P</span><span>previous slide</span></div>
         <div><span>O</span><span>overview slides</span></div>
         <div><span>ctrl+left click</span><span>zoom element</span></div>
@@ -73,50 +73,57 @@
 </section>
 
 
-<section data-min="5"><h1>What's in a program</h1></section>
-<section><h2>What's in a program</h2>
-	<dt>If we make an analogy with a natural language:
-		<table style="margin-left: 1em">
-			<tr>
-				<th>Bulgarian</th>
-				<th></th>
-				<th>Python</th>
-			</tr>
-			<tr>
-				<td>novel</td>
-				<td><=></td>
-				<td>program</td>
-			</tr>
-			<tr>
-				<td>paragraph</td>
-				<td><=></td>
-				<td>block</td>
-			</tr>
-			<tr>
-				<td>sentences</td>
-				<td><=></td>
-				<td>instructions</td>
-			</tr>
-			<tr>
-				<td>types of sentences (declarative, imperative,...)</td>
-				<td><=></td>
-				<td>types of instructions (statements, expressions)</td>
-			</tr>
-			<tr>
-				<td>grammar rules (can be ambiguous)</td>
-				<td><=></td>
-				<td>grammar rules (could not be ambiguous)</td>
-			</tr>
-		</table>
-	</dt>
-</section>
-<section><h2>What's in a Python program</h2>
-	<dl class="fa">
-		<dt>A program consists of set of instructions, which are executed by the computer.</dt>
-		<dt>In Python, we write each instruction on a new line.</dt>
-		<dt>Instructions which performs one task are separated as a <code class="note">block</code>.</dt>
-		<dt>In Python the block is not separated by braces, as in other programming languages, but by <span class="note">same indentation</span> of the instructions in it.</dt>
-	</dl>
+<section data-min="5"><h1>Python design philosophy and syntax</h1></section>
+<section><h2>Python design philosophy and syntax</h2>
+	<section><h3>The Zen of Python</h3>
+		<pre><code rel="Terminal" class="ascii">
+			$ python -m this
+			The Zen of Python, by Tim Peters
+
+			Beautiful is better than ugly.
+			Explicit is better than implicit.
+			Simple is better than complex.
+			Complex is better than complicated.
+			Flat is better than nested.
+			Sparse is better than dense.
+			Readability counts.
+			Special cases aren't special enough to break the rules.
+			Although practicality beats purity.
+			Errors should never pass silently.
+			Unless explicitly silenced.
+			In the face of ambiguity, refuse the temptation to guess.
+			There should be one-- and preferably only one --obvious way to do it.
+			Although that way may not be obvious at first unless you're Dutch.
+			Now is better than never.
+			Although never is often better than *right* now.
+			If the implementation is hard to explain, it's a bad idea.
+			If the implementation is easy to explain, it may be a good idea.
+			Namespaces are one honking great idea -- let's do more of those!
+		</code></pre>
+	</section>
+	<section><h3>Clean syntax</h3>
+		<dl class="fa">
+			<dt>Statements are terminated by <span class="note">EOL</span>, not by semicolons</dt>
+			<dd>Though, you can use semicolons if you wish</dd>
+			<dt>Block of statements is wrapped by the <span class="note">same indentation</span>, not by curly braces</dt>
+			<dd>You can use <span class="note">spaces or tabs</span> for indent.</dd>
+			<dd>Mixing spaces with tabs can lead to errors or bugs.</dd>
+		</dl>
+	</section>
+	<section><h3>Do not mix space and tabs</h3>
+		<a href="images/mixed_indent_c.png"><img src="images/mixed_indent_c.png"></a>
+		<p>That code will lead to</p>
+		<p><span class="note">TabError: inconsistent use of tabs and spaces in indentation</span></p>
+	</section>
+	<section><h3>Same indent!</h3>
+		<a href="images/IndentationError.png"><img src="images/IndentationError.png"></a>
+		<p>That code will lead to</p>
+		<p><span class="note">IndentationError: unexpected indent</span></p>
+	</section>
+	<section><h3>Wrong indentation can cause bugs!</h3>
+		<a href="images/indentation_bug.png"><img src="images/indentation_bug.png"></a>
+		<p>Can you spot the bug?</p>
+	</section>
 </section>
 
 <section data-min="5"><h1>Data Types Introduction</h1></section>
@@ -128,8 +135,8 @@
 	</dl>
 </section>
 
-<section data-min="10"><h1>Number data Type</h1></section>
-<section><h2>Number data Type</h2>
+<section data-min="10"><h1>Numeric Data Types</h1></section>
+<section><h2>Numeric Data Types</h2>
 	<section>
 		<dl class="fa">
 			<dt>In Python we can use <span class="keyword">integer</span>, <span class="keyword">floating point</span> and <span class="keyword">complex</span> numbers</dt>
@@ -140,9 +147,12 @@
 	</section>
 	<section><h3>integer numbers</h3>
 		<p>we can use positive and negative integers:</p>
-		<pre><code rel="Python" class="python">
+		<pre><code rel="Python" class="python3">
 			# positive integer literal:
 			>>> 42
+			42
+
+			>>> +42
 			42
 
 			# negative integer literal:
@@ -152,7 +162,7 @@
 	</section>
 	<section><h3>floating point numbers</h3>
 		<p>we can use positive and negative floating point numbers</p>
-		<pre><code rel="Python" class="python">
+		<pre><code rel="Python" class="python3">
 			>>> 3.1234
 			3.1234
 
@@ -167,6 +177,15 @@
 			>>>
 		</code></pre>
 	</section>
+	<section><h3>Underscores in Numeric Literals</h3>
+		<dl class="fa">
+			<dt>As of <span class="note">Python 3.6</span> you can use underscores in numeric literals to improve readability of long numbers</dt>
+			<pre><code rel="Python" class="python3">
+				>>> 1_000_000 + 2_000_000
+				3000000
+			</code></pre>
+		</dl>
+	</section>
 	<section><h3>arithmetic operations</h3>
 		<dl class="fa">
 			<dt>Python supports the standard arithmetic operations:</dt>
@@ -175,7 +194,7 @@
 		<p class="note">The division operator "<code>/</code>" in python2 returns the integer part(i.e. works like Floor division), while in python3 it returns the float result</p>
 	</section>
 	<section><h3>Example: arithmetic operations</h3>
-		<pre><code rel="Python" class="python">
+		<pre><code rel="Python" class="python3">
 				>>> 5-3
 				2
 				>>> 5*3
@@ -189,11 +208,11 @@
 		</code></pre>
 	</section>
 	<section><h3>Example: python3 vs python2 division</h3>
-		<pre><code rel="Python2" class="python">
+		<pre><code rel="Python2" class="python3">
 			>>> 5/3
 			1
 		</code></pre>
-		<pre><code rel="Python3" class="python">
+		<pre><code rel="Python3" class="python3">
 			>>> 5/3
 			1.6666666666666667
 
@@ -206,14 +225,21 @@
 		<dl class="fa">
 			<dt>math module is native to every python distribution.</dt>
 			<dt>to use its functions you only have to import it in your program:</dt>
-			<pre><code rel="Python" class="python">
+			<pre><code rel="Python" class="python3">
 				import math
 				# do something with math
 			</code></pre>
+			<dt><a href="https://docs.python.org/3/library/math.html">math — Mathematical functions</a> @python docs</dt>
 		</dl>
 	</section>
-	<section><h3>Example: math functions</h3>
-		<pre><code rel="Python" class="python">
+	<section><h3>Built-in math functions</h3>
+		<dl class="fa">
+			<dt>Python interpreter has a number of built-in functions which can be used without any imports.</dt>
+			<dt>Part of them, concerning Math are: <code><a href="https://docs.python.org/3/library/functions.html#abs">abs()</a></code>, <code><a href="https://docs.python.org/3/library/functions.html#max">max()</a></code>, <code><a href="https://docs.python.org/3/library/functions.html#min">min()</a></code>, <code><a href="https://docs.python.org/3/library/functions.html#round">round()</a></code></dt>
+		</dl>
+	</section>
+	<section><h3>Example: math module methods</h3>
+		<pre><code rel="Python" class="python3">
 			>>> import math
 			>>>
 			>>> math.pi
@@ -224,6 +250,29 @@
 			8.0
 			>>> math.sqrt(9)
 			3.0
+			>>> math.ceil(2.9)
+			3
+			>>> math.ceil(2.1)
+			3
+			>>> math.floor(2.9)
+			2
+			>>> math.floor(2.1)
+
+		</code></pre>
+	</section>
+	<section><h3>Example: math built-in functions</h3>
+		<pre><code rel="Python" class="python3">
+			>>> round(2.51)
+			3
+			>>> round(2.49)
+			2
+			>>> max(1,2,3)
+			3
+			>>> min(1,2,3)
+			1
+			>>> abs(2-5)
+			3
+
 		</code></pre>
 	</section>
 </section>
@@ -234,11 +283,12 @@
 		<dl class="fa">
 			<dt>Strings are <b>immutable</b> sequences of Unicode code points <span style="font-size: 0.8em">(will be discussed further)</span>.</dt>
 			<dt>Single-line strings literal should be closed in single or double quotes</dt>
+			<dd><i>No difference between single or double quoted strings!</i></dd>
 			<dt>Multi-line strings literal should be closed in triple single or double quotes</dt>
 		</dl>
 	</section>
 	<section><h3>Examples</h3>
-		<pre><code rel="Python" class="python">
+		<pre><code rel="Python" class="python3">
 			>>> "this is a single line string"
 			'this is a single line string'
 
@@ -253,7 +303,7 @@
 		</code></pre>
 	</section>
 	<section><h3>Examples</h3>
-		<pre><code rel="Python" class="python">
+		<pre><code rel="Python" class="python3">
 			>>> """infact you can -
 			... if you use these triple quotes"""
 			'infact you can - \nif you use these triple quotes'
@@ -271,7 +321,7 @@
 <section><h2>Strings operations</h2>
 	<section><h3>concatenation: <code>+</code></h3>
 		<p>The operation is defined only on <span class="note">same data types</span>, I.e. Python can not concatenate apples with oranges:</p>
-		<pre><code rel="Python" class="python">
+		<pre><code rel="Python" class="python3">
 			#string concatenation with '+':
 			>>> "ala" + "bala"
 			'alabala
@@ -286,7 +336,7 @@
 	</section>
 	<section><h3>repetition: <code>*</code></h3>
 		<p>One of the operands must be <span class="note">string</span>, the other - <span class="note">integer</span></p>
-		<pre><code rel="Python" class="python">
+		<pre><code rel="Python" class="python3">
 			>>> "-" * 10
 			'----------'
 
@@ -302,50 +352,168 @@
 		</code></pre>
 	</section>
 	<section><h3>String Methods</h3>
-		<pre><code rel="Python" class="python">
+		<pre><code rel="Python" class="python3">
 			# string methods:
-			>>> "iva".capitalize()
-			'Iva'
+			>>> "ada".capitalize()
+			'Ada'
+			>>> "alabala".count("a")
+			4
+			>>> "Alabala".count("a")
+			3
+			>>> "AlabAla".find("a")
+			2
+			>>> "alabala".replace("a", "o")
+			'olobolo'
+			>>> "one,two,three".split(",")
+			['one', 'two', 'three']
+
+
 		</code></pre>
 		<p style="opacity: 0.7; font-size: 0.9em">What a method is will be discussed further!</p>
 		<p>For now, you can try to look at the docs: <a href="https://docs.python.org/3/library/stdtypes.html#string-methods">String Methods @docs.python.org</a></p>
 	</section>
 </section>
 
-<section data-min="5"><h1>Variables</h1></section>
-<section><h2>Variables</h2>
-	<section><h3>What are they?</h3>
+<section data-min="5"><h1>Variables/Value Names</h1></section>
+<section><h2>Variables in Python</h2>
+	<section><h3>What is a variable in Python?</h3>
 		<dl class="fa">
-			<dt>A names for "containers" (placed in RAM) in which values can be stored</dt>
-			<dt>We can <b>set</b> values in a variable, i.e. to <b>write</b> a value into the corresponding container.</dt>
+			<dt>A <span class="note">name</span> (identifier) for "container" (placed in RAM) in which values can be stored and retrieved</dt>
+			<dt>When we say that we <b>set</b> value in a variable, it should be understood as 	to <b>write</b> a value into the corresponding container.</dt>
+			<dt>In Python we speak about <span class="note">name binding</span>, when we assign a value to variable.</dt>
 			<dt>We can <b>get</b> the variable value, i.e. to <b>read</b> the content of the corresponding container</dt>
 		</dl>
 	</section>
-	<section><h3>Identifiers rules and conventions</h3>
-		<dl class="fa">
+	<section><h3>A very simplified view of variables in RAM</h3>
+		<a href="images/python_variables_in_RAM.png"><img src="images/python_variables_in_RAM.png"></a>
+	</section>
+	<section><h3>Identifiers rules</h3>
+		<dl class="fa" style="width: 100%">
 			<dt>Variables names should follow next rules:</dt>
-			<dd>Start with letter(i.e. [A-Z] or [a-z]) or underscore</dd>
-			<dd>Followed by zero or more letters, underscores and digits </dd>
+			<dd>Start with <span class="note">letter or underscore</span></dd>
+			<dd>Followed by zero or more <span class="note">letters, underscores and digits</span></dd>
+			<dt>Variable names <span class="note">are case-sensitive</span></dt>
+			<dt><a href="https://docs.python.org/3/reference/lexical_analysis.html#identifiers">Identifiers and keywords</a> @python docs</dt>
+		</dl>
+	</section>
+	<section><h3>Naming Conventions</h3>
+		<dl class="fa">
+			<dt>Function names should be lowercase, with words separated by underscores as necessary to improve readability.</dt>
+			<dt>Variable names follow the same convention as function names.</dt>
+			<dt>mixedCase is allowed only in contexts where that's already the prevailing style (e.g. threading.py), to retain backwards compatibility.</dt>
+			<dt><a href="https://www.python.org/dev/peps/pep-0008/#function-and-variable-names">PEP 8 (Function and Variable Names)</a></dt>
 		</dl>
 	</section>
 	<section><h3>example</h3>
 		<pre><code rel="Python" class="python">
 			x = 99
-			y = 3,141516
-			first_name = "ada"
-			sur_name = "byron"
-			num_list = [1,2,3]
+			print("x = ", x)
 
-			print("x = ", x,)
-			print("y = ", y)
+			first_name = "ada"
 			print("first_name = ", first_name)
-			print("sur_name = ", sur_name)
-			print("num_list = ", num_list)
+
+			print("first_name = ", First_name) #NameError: name 'First_name' is not defined
+
+			sur-name = "byron" #SyntaxError: can't assign to operator
+
 		</code></pre>
 	</section>
-	<section><h3>A very simplified view of variables in RAM</h3>
-		<a href="images/python_variables_in_RAM.png"><img src="images/python_variables_in_RAM.png"></a>
+	<section><h3>Name binding</h3>
+		<dl class="fa">
+			<dt>Name binding is the association between a name and an a value</dt>
+			<dd>Note, that all values in Python are represented as objects</dd>
+			<dt>We can bind a value to a name with the <code>assignment</code> operator (<code>=</code>)</dt>
+			<dt>We can check the unique identity of an object by the <code>id()</code> built-in function.</dt>
+			<dd>CPython uses the object's memory address for the unique id</dd>
+			<pre><code rel="Python" class="python">
+				>>> a = 2
+				>>> id(a)
+				9413216
+			</code></pre>
+		</dl>
 	</section>
+	<section><h3>Name binding</h3>
+		<a href="images/variables_bounding.png"><img src="images/variables_bounding.png"></a>
+	</section>
+	<section><h3>Name binding</h3>
+		<pre><code rel="JS" class="js">
+			>>> a = 1
+			>>> b = 1
+			>>> id(a)
+			9413184
+			>>> id(b)
+			9413184
+		</code></pre>
+	</section>
+	<section><h3>Name Binding</h3>
+		<dl class="fa">
+			<dt>Python reuses the immutable objects instead of creating copies</dt>
+			<dd>That's through only for small objects (implementation dependant)</dd>
+
+			<pre><code rel="Python" class="python">
+				# only one object will be created
+				>>> a = 1
+				>>> b = 1
+				>>> id(a)
+				9413184
+				>>> id(b)
+				9413184
+
+				# two objects will be created
+				>>> c = 1_000_000
+				>>> d = 1_000_000
+				>>> id(c)
+				140418111214320
+				>>> id(d)
+				140418111215440
+			</code></pre>
+		</dl>
+	</section>
+	<section><h3>Name binding</h3>
+		<pre><code rel="Python" class="python">
+			>>> a = 5
+			>>> b = 2+3
+			>>> c = b
+			>>> id(a)
+			9413312
+			>>> id(b)
+			9413312
+			>>> id(c)
+			9413312
+		</code></pre>
+		<dl class="fa">
+			<dt>Note, that in memory there is exactly one object (id: 9413312, value:5) after execution of the above code.</dt>
+		</dl>
+	</section>
+	<section><h3>Name binding - aliasing</h3>
+		<dl class="fa">
+			<dt>When the right-hand side of the assignment is an existing variable, Python did not create a new object, but rather gives that object another name, an alias.</dt>
+			<pre><code rel="Python" class="python">
+				>>> a = 1_000_000
+				>>> b = a
+				>>> id(a)
+				140418111916176
+				>>> id(b)
+				140418111916176
+
+			</code></pre>
+		</dl>
+	</section>
+	<section><h3 class="advanced">Garbage collection</h3>
+		<pre><code rel="Python" class="python">
+			>>> a = 5
+			>>> id(a)
+			9413312
+
+			# Now we create a new object, and bind it to 'a'
+			>>> a = 6
+			>>> id(a)
+			9413344
+
+			# the object [id:9413312, value:5] will be deleted by the garbage collector, as nothing points to it
+		</code></pre>
+	</section>
+
 </section>
 
 <section data-min="5"><h1>Comments</h1></section>
@@ -363,7 +531,7 @@
 		<dl class="fa">
 			<dt>Single line comment: <code class="note">#</code></dt>
 			<dd>every line which starts with <code class="note">#</code>(hash tag) is a comment and is ignored py Python interpreter</dd>
-			<pre><code rel="Python" class="python">
+			<pre><code rel="Python" class="python3">
 				# this is a just a comment: no print("whatever") will happens
 				print("this will be printed, of course")
 
@@ -372,6 +540,9 @@
 				print(3**2 + 4**2 == 5**2)
 			</code></pre>
 		</dl>
+	</section>
+	<section><h3>Reference</h3>
+		<a href="https://www.python.org/dev/peps/pep-0008/#comments">PEP8 - Comments</a>
 	</section>
 </section>
 
@@ -393,7 +564,7 @@
 		</code></pre>
 	</section>
 	<section><h3>solution - without variables</h3>
-		<pre><code rel="Python" class="python">
+		<pre><code rel="Python" class="python3">
 			"""
 			acad_to_astro_hours.py
 
@@ -405,7 +576,7 @@
 	</section>
 
 	<section><h3>solution: too many variables</h3>
-		<pre><code rel="Python" class="python">
+		<pre><code rel="Python" class="python3">
 			"""
 			acad_to_astro_hours_with_vars.py
 
@@ -457,7 +628,7 @@
 			<dd>W = weight_in_kilogram</dd>
 			<dd>H = height_in_meters</dd>
 			<dt>Your program should outputs the rounded result (to 2 digits from the decimal point). You can use the python's build-in <a href="https://www.tutorialspoint.com/python/number_round.htm">round()</a> function, like:</dt>
-			<pre><code rel="Python" class="python">
+			<pre><code rel="Python" class="python3">
 				>>> round(2.1457, 2)
 				2.15
 
@@ -480,7 +651,7 @@
 		</table>
 	</section>
 	<section><h3>solution</h3>
-		<pre><code rel="Python" class="python">
+		<pre><code rel="Python" class="python3">
 			"""
 			Solution without using variables to store values,
 

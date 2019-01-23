@@ -22,7 +22,7 @@ function init(){
     calcTotalHours();
     calcTotalDays();
     // hideAllNodes(themes);
-    // hideAllNodes(subThemes);
+    hideAllNodes(subThemes);
 
     if (document.documentElement.clientWidth > 700) {
         calcSectionHours();

@@ -6,7 +6,10 @@
 	[
 		{
 			"path": "."
-		}
+		},
+    {
+      "path": "../ProgressBG-VMware-Python-Code/"
+    },
 	],
 	"settings":
 	{

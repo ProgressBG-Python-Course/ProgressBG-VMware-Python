@@ -261,8 +261,24 @@
 		</code></pre>
 	</section>
 	<section><h3><code>do-while</code> emulations</h3>
-		<p class="note">Python did not have <code>do-while</code> loop, as in other languages. But it can be easily emulated.</p>
-		<p>Reason: <a href="https://www.python.org/dev/peps/pep-0020/">The Zen of Python</a></p>
+		<p><span class="note">Python did not have <code>do-while</code> loop, as in other languages</span> (reason: <a href="https://www.python.org/dev/peps/pep-0020/">The Zen of Python</a>)</p>
+		<p>General structure of a do-while loop:</p>
+		<pre><code rel="Python" class="python">
+			do {
+
+			  loop block
+
+			} while (condition);
+		</code></pre>
+	</section>
+	<section>
+		<p>But it can be easily emulated if needed</p>
+		<pre><code rel="Python - pseudo code" class="python">
+			while True:
+			  # loop block
+
+				if (condition): break
+		</code></pre>
 	</section>
 	<section><h3>Example - <code>do-while</code> emulation with <code>break</code></h3>
 		<pre><code rel="Python" class="python">
@@ -270,13 +286,13 @@
 			while True:
 				user_name = input("Enter a name (at least 3 symbols): ")
 				user_name_length = len(user_name)
-				if user_name_length > 3:
-					break
+
+				if user_name_length > 3: break
 
 			print("Thank you, {}!".format(user_name))
 		</code></pre>
 	</section>
-	<section><h3>Example - <code>do-while</code> emulation without <code>break</code></h3>
+	<!-- <section><h3>Example - <code>do-while</code> emulation without <code>break</code></h3>
 		<pre><code rel="Python" class="python">
 			# ask user to enter a name (string), until it contains at least 3 symbols
 			user_name = input("Enter a name, please: ")
@@ -289,8 +305,36 @@
 			print("Thank you, {}!".format(user_name))
 		</code></pre>
 		<p class="note">Can you imagine how the code would look like, if the "do" block was more than 1 line long?</p>
+	</section> -->
+	<section><h3>switch-case statement emulation</h3>
+		<dl class="fa">
+			<dt>If you need a kind of "switch-case" functionality, you can do it with multiple <code>elif - break</code> blocks</dt>
+		</dl>
+		<pre><code rel="JS" class="js">
+			# print program menu:
+			print("Select an action:")
+			print("1. Action 1")
+			print("2. Action 3")
+			print("3. Action 3")
+
+			while True:
+				user_choice = int(input("Enter a number [0-4]: "))
+
+				if user_choice == 1:
+					print("Actin 1 fired!")
+					break
+				elif user_choice == 2:
+					print("Actin 2 fired!")
+					break
+				elif user_choice == 3:
+					print("Actin 3 fired!")
+					break
+				else:
+					pass
+		</code></pre>
+		<p>Another way is to use Python dictionaries, which will be discussed further.</p>
 	</section>
-	<!-- <section><h3>Task: prompt user to enter at least 3 symbols long user name</h3>
+	<section><h3>Task: prompt user to enter at least 3 symbols long user name</h3>
 		<dl class="fa">
 			<dt>Implement a program, which will asks the user for a user name with at least 3 symbols in it.</dt>
 			<dt>Bellow is the desired output</dt>
@@ -299,13 +343,13 @@
 			Enter your user name (at least 3 symbols):
 			*** At least 3 symbols, please! Try again.
 
-			Enter your user name (at least 3 symbols): iv
+			Enter your user name (at least 3 symbols): ad
 			*** At least 3 symbols, please! Try again.
 
-			Enter your user name (at least 3 symbols): iva
-			Nice, your user_name is:  iva
+			Enter your user name (at least 3 symbols): ada
+			Nice, your user_name is:  ada
 		</code></pre>
-	</section> -->
+	</section>
 </section>
 
 <section><h1><code>continue</code> statement</h1></section>

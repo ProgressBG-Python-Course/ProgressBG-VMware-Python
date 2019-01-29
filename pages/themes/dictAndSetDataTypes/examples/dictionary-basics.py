@@ -1,8 +1,26 @@
-prices = {
-    "apples": 2.50,
-    "oranges": 2.43,
-    "bananas": 3.50
+# en_bg_dict = {
+#  'apple': 'ябълка',
+#  'orange':'портокал',
+#  'banana':'банан'
+# }
+
+# print(en_bg_dict['apple'])
+
+en_bg_dict = {
+  'apple': 'ябълка',
+  'orange':'портокал',
+  'banana':'банан',
+  'apple':'манго',
 }
+
+print(en_bg_dict['apple'])
+
+
+# prices = {
+#     "apples": 2.50,
+#     "oranges": 2.43,
+#     "bananas": 3.50
+# }
 
 # '''change apples prices:'''
 # prices['apples'] = 2.20
@@ -20,5 +38,5 @@ prices = {
 # # {'bananas': 3.5}
 
 # add new key:value pair:
-prices['plums'] = 4.30
-print(prices)
+# prices['plums'] = 4.30
+# print(prices)

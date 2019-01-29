@@ -295,6 +295,7 @@
 			<dt>The range type represents an <span class="note">immutable sequence of numbers</span>.</dt>
 			<dt>It's used to generate a number sequence, limited between pre-given <b>start</b> and <b>stop</b> integer values.</dt>
 			<dt class="note">It's typical use in Python is with <code>for</code> loops.</dt>
+			<dt>Reference: <a href="https://docs.python.org/3/library/stdtypes.html#ranges">ranges @python3 docs</a></dt>
 		</dl>
 	</section>
 	<section><h3>Syntax</h3>
@@ -319,11 +320,14 @@
 			range(10)
 			# same as above
 
-			range(2,10,2)
+			range(2, 10, 2)
 			# generates the sequence: [2, 4, 6, 8]
 
 			range(9, -1, -1)
 			# generates the sequence: [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+
+			range(-3, 4)
+			# generates the sequence: [-3, -2, -1, 0, 1, 2, 3]
 
 			range(9, -1, 1)
 			# incorrect sequence formulae, will return empty sequence
@@ -398,17 +402,19 @@
 	<section><h3>Concatenation <span class="note">+</span></h3>
 		<dl class="fa">
 			<dt>Concatenate two sequences and return the resulting sequence</dt>
-		</dl>
-		<pre><code rel="Python" class="python">
-				### Let's have two lists:
-				fruits = ["apple", "banana", "strawberry"]
-				numbers = [1,2,3]
+			<pre><code rel="Python" class="python">
+					### Let's have two lists:
+					fruits = ["apple", "banana", "strawberry"]
+					numbers = [1,2,3]
 
-				### We can concatenate them:
-				concat_list = fruits + numbers
-				print(concat_list)
-				# ['apple', 'banana', 'strawberry', 1, 2, 3]
-		</code></pre>
+					### We can concatenate them:
+					concat_list = fruits + numbers
+					print(concat_list)
+					# ['apple', 'banana', 'strawberry', 1, 2, 3]
+			</code></pre>
+			<dt>Only <span class="note">srings</span>, <span class="note">lists</span> and <span class="note">tuples</span> support the concatenation operation.</dt>
+			<dt>ranges <span class="note">can not be</span> concatenated.</dt>
+		</dl>
 	</section>
 	<section><h3>Concatenation - lists example</h3>
 		<pre><code rel="Python" class="python">
@@ -435,16 +441,19 @@
 		<dl class="fa">
 			<dt>Repeats a sequence a given number of times and return the resulting sequence</dt>
 			<dt>The multiplier must be an integer value!</dt>
-		</dl>
-		<pre><code rel="Python" class="python">
-			### Let's have a list:
-			numbers = [1, 2, 3]
+			<pre><code rel="Python" class="python">
+				### Let's have a list:
+				numbers = [1, 2, 3]
 
-			### Repetition
-			rep_list = numbers * 3
-			print(rep_list)
-			# [1, 2, 3, 1, 2, 3, 1, 2, 3]
-		</code></pre>
+				### Repetition
+				rep_list = numbers * 3
+				print(rep_list)
+				# [1, 2, 3, 1, 2, 3, 1, 2, 3]
+			</code></pre>
+			<dt>Only <span class="note">srings</span>, <span class="note">lists</span> and <span class="note">tuples</span> support the repetition operation.</dt>
+			<dt>ranges <span class="note">can not be</span> repeated.</dt>
+		</dl>
+
 	</section>
 	<section><h3>Repetition - example</h3>
 		<pre><code rel="Python" class="python">
@@ -533,6 +542,22 @@
 			# 5 4 3 2 1
 		</code></pre>
 	</section>
+	<section><h3>Indexing from end to start - use case</h3>
+		<dl class="fa">
+			<dt>The pythonic way to get the last element of a sequence is by using the <code>-1</code> index, not by <code>len()-1</code></dt>
+		</dl>
+		<pre><code rel="Python" class="python">
+			fruits = ["apple", "banana", "strawberry"]
+
+			# the pythonic way to print last element
+			print(fruits[-1])
+			# "strawberry"
+
+			# not pythonic (though it works):
+			print(fruits[len(fruits)-1])
+			# "strawberry"
+		</code></pre>
+	</section>
 	<section><h3>Slicing - syntax</h3>
 		<pre><code rel="Syntax" class="shell" data-noescape>
 			sliced = <i>sequence</i><b>[</b><i>start</i><b>:</b><i>end</i><b>:</b><i>step</i><b>]</b>
@@ -549,16 +574,27 @@
 			a[:end]      # get items from the beginning through end-1
 			a[:]         # a copy of the whole array
 		</code></pre>
+		<p>Reference: <a href="https://docs.python.org/3/library/functions.html#slice">slice @python docs</a></p>
 	</section>
 	<section><h3>Examples</h3>
 		<pre><code rel="Python" class="python">
 			>>> str = "abcdef"
 
-			>>> str[:]
-			'abcdef'
+			>>> str[2:3]
+			'c'
 
 			>>> str[2:4]
 			'cd'
+
+			>>> str[-1:2:-1]
+			'fed'
+
+			>>> str[-1::-1]
+			'fedcba'
+
+			# same, but ugly:
+			>>> str[-1:-7:-1]
+			'fedcba'
 
 			>>> str[]
 			SyntaxError: invalid syntax
@@ -568,21 +604,68 @@
 		<pre><code rel="Python" class="python">
 			>>> str = "abcdef"
 
-			>>> str[0:3]
-			'abc'
+			>>> str[:]
+			'abcdef'
 
 			>>> str[:3]
 			'abc'
 
-			>>> str[2:3]
-			'c'
-
 			>>> str[3:]
 			'def'
 
-			>>> str[-1:-7:-1]
+			>>> str[::2]
+			'ace'
+
+			>>> str[::-1]
 			'fedcba'
 		</code></pre>
+	</section>
+	<section><h3 class="advanced">Slicing "multi-dimensional" lists</h3>
+		<dl class="fa">
+			<dt>Normal Python lists are single-dimensional, though they can look like multi-dim lists if their elements are lists</dt>
+			<dt>I.e. Python did not support syntax to slice columns from "multi dim" looking list</dt>
+			<pre><code rel="Python" class="python">
+				m = [
+				  [1,2,3],
+				  [4,5,6],
+				  [7,8,9],
+				]
+
+				# trying to slice the second column ([1,5,8]):
+				print(m[:,1])
+				# TypeError: list indices must be integers or slices, not tuple
+			</code></pre>
+		</dl>
+	</section>
+	<section><h3 class="advanced">Slicing multi-dimensional arrays</h3>
+		<dl class="fa">
+			<dt>But the package <a href="http://www.numpy.org/">numpy</a> contains powerful N-dimensional array objects and other numerical operations.
+			</dt>
+			<dt>In order to use it, you need to install it first:</dt>
+			<pre><code rel="Terminal" class="bash">
+				pipenv install numpy
+			</code></pre>
+			<pre><code rel="Python" class="python">
+				import numpy
+
+				# lets create a python list
+				m = [
+				  [1,2,3],
+				  [4,5,6],
+				  [7,8,9],
+				]
+
+				# create a numpy array from that list:
+				arr = numpy.array(m)
+
+				# now we can easily use numpy's multi-dim slicing:
+				print(arr[:,1])
+				#[2 5 8]
+
+				print(type(arr[:,1]))
+				<class 'numpy.ndarray'>
+			</code></pre>
+		</dl>
 	</section>
 </section>
 
@@ -611,7 +694,7 @@
 			    print(item)
 		</code></pre>
 	</section>
-	<section><h3 class="advanced">Loop on indexes of sequence</h3>
+	<section><h3 class="advanced">Loop on indexes of sequence: C-style</h3>
 		<dl class="fa">
 			<dt>As we saw, Python doesn't have C-style for loop, but we can emulate it with:</dt>
 		</dl>
@@ -628,7 +711,7 @@
 			3 - n
 		</code></pre>
 	</section>
-	<section><h3>Loop on indexes of sequence</h3>
+	<section><h3>Loop on indexes of sequence: Pythonic way</h3>
 		<dl class="fa">
 			<dt>To get the index and the item in a <code>for</code> loop, we can also use the <a href="https://docs.python.org/3/library/functions.html#enumerate">enumerate()</a> built-in function:</dt>
 		</dl>

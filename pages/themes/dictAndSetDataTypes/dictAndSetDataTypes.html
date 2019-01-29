@@ -104,7 +104,33 @@
     <dl class="fa">
       <dt>There is <span class="note">no order</span> in dictionary! We can not say if 'key1' pair will be before 'key2' pair</dt>
       <dt>Keys must be <span class="note">immutable</span> data type. Usually they are strings.</dt>
+      <dt>Keys must be <span class="note">unique</span>. If multiple "key:values" pairs with the same key exists, only the last one pair will be present in the dictionary</dt>
     </dl>
+  </section>
+  <section><h3>Dictionaries - examples</h3>
+    <pre><code rel="Python" class="python">
+      en_bg_dict = {
+       'apple': 'ябълка',
+       'orange':'портокал',
+       'banana':'банан'
+      }
+
+      print(en_bg_dict['apple'])
+      # ябълка
+    </code></pre>
+  </section>
+  <section><h3>Dictionaries - unique keys example</h3>
+    <pre><code rel="Python" class="python">
+      en_bg_dict = {
+       'apple': 'ябълка',
+       'orange':'портокал',
+       'banana':'банан',
+       'apple':'манго',
+      }
+
+      print(en_bg_dict['apple'])
+      # манго
+    </code></pre>
   </section>
   <section><h3>Retrieve item from dictionary</h3>
     <p>Dictionary values can be retrieved from the collection using their respective keys.</p>

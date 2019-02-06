@@ -85,7 +85,7 @@
 		<dl class="fa">
 			<dt>In procedural-languages (C, Fortran, Pascal) the data structures are separated from algorithms of the software entities (a step over Assembly languages)</dt>
 			<dt>But in big projects (consider CRM) it is:
-			<dd>difficult to describe the problem solely in terms of procedures.</dd>
+			<dd>difficult to describe the problem solely in terms of procedures/functions.</dd>
 			<dd>more difficult to trace which function manipulates which data.</dd>
 		</dl>
 	</section>
@@ -93,7 +93,8 @@
 		<dl class="fa">
 			<dt>A higher level of abstraction for solving real-life problems.</dt>
 			<dt>The software system can be think in therms of objects, communicating with each other.</dt>
-			<dt>Objects are reusable software components, as each encapsulates the data and logic for its operation. A black-box which do what it has to do.</dt>
+			<dt>Objects are reusable software components, as each encapsulates the data and logic for its operation.</dt>
+			<dd>A black-box, with input/output, which do what it has to do.</dd>
 		</dl>
 	</section>
 	<section><h3>OOP vs Procedural Paradigms</h3>
@@ -111,11 +112,11 @@
 	</section>
 	<section><h3>Object</h3>
 		<dl class="fa">
-			<dt>An instance of a class - an entity of given class, that can be used in a program</dt>
+			<dt>An <span class="note">instance</span> of a class - an entity of given class, that can be used in a program</dt>
 			<dt>Instances of same class have similar properties and behaviour</dt>
 		</dl>
 	</section>
-	<section><h3>Diagram</h3>
+	<section><h3>Instances of a class - diagram</h3>
 		<a href="images/Objects_Comunication.png"><img src="images/Objects_Comunication.png" style="height: 70vh"></a>
 	</section>
 	<section><h3>Inheritance</h3>
@@ -136,18 +137,19 @@
 			    pass
 		</code></pre>
 		<pre><code rel="Python" class="python">
+			# let's create the class Person (dummy, but real):
 			class Person:
 				pass
 		</code></pre>
 	</section>
 
 	<section><h3>Object Creation</h3>
-		<p>In python, it's simple:</p>
+		<p>In Python, it's simple:</p>
 		<pre><code rel="Syntax" class="python">
 			object_name = ClassName()
 		</code></pre>
 		<pre><code rel="Python" class="python">
-			# create Person class:
+			# create Person class (still dummy):
 			class Person:
 				pass
 
@@ -187,8 +189,18 @@
 		<dl class="fa">
 			<dt>The <span class="note">attributes</span> describes an object's characteristics. I.e. <span class="note">specific data</span> which characterize the object.</dt>
 			<dt>Usually, objects from same class, have same attributes, but with different values.</dt>
-			<dt>In python,  we can dynamically create arbitrary new attributes for existing objects</dt>
+			<dt>In Python,  we can dynamically create arbitrary new attributes for existing objects</dt>
 		</dl>
+		<pre><code rel="Python" class="python">
+				class Person:
+					pass
+
+				maria = Person()
+				pesho = Person()
+
+				# only maria object will have the attribute 'name'. Not a good practice...
+				maria.name = 'Maria Popova'
+			</code></pre>
 	</section>
 	<section><h3>Accessing Object's Attributes - the <span class="note">dot notation</span></h3>
 		<pre><code rel="Syntax" class="python">
@@ -268,7 +280,7 @@
 				def method_name(self):
 					pass
 		</code></pre>
-		<dl class="fa">06.20
+		<dl class="fa">
 			<dt>Note, that <span class="note">you must define at least one parameter in the method</span>.</dt>
 			<dt>It will take (automatically) a reference to the object, which called that method.</dt>
 			<dt>You can name the parameter as you wish, but the <span class="note">convention is to name it <code>self</code></span></dt>
@@ -438,7 +450,7 @@
 	<section><h3><code>__str__</code> vs <code>__repr__</code></h3>
 		<dl class="fa">
 			<dt>Use __str__, if the output should be for the end user or in other words, if it should be nicely printed.</dt>
-			<dt>Use __repr__  for the internal representation of an object. The output of __repr__ should be - if feasible - a string which can be parsed by the python interpreter. The result of this parsing is in an equal object.</dt>
+			<dt>Use __repr__  for the internal representation of an object. The output of __repr__ should be - if feasible - a string which can be parsed by the Python interpreter. The result of this parsing is in an equal object.</dt>
 		</dl>
 	</section>
 	<section><h3>Other dunder methods</h3>

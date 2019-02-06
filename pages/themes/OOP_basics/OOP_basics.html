@@ -401,7 +401,7 @@
 		<dl class="fa">
 			<dt>Called by str(object), format() and print() built-in functions  to compute the “informal” or nicely printable string representation of an object.</dt>
 			<dt>You can define inside a class the <code>__str__()</code> method which will be used, when you call the str(), format() or print() functions of a class instance</dt>
-			<dt>The return value must be a string!</dt>
+			<dt class="note">The return value must be a string!</dt>
 		</dl>
 	</section>
 	<section><h3>example</h3>
@@ -423,8 +423,8 @@
 	</section>
 	<section><h3>__repr__ method</h3>
 		<dl class="fa">
-			<dt>Called by the repr() built-in function, which is titypically used for debugging</dt>
-			<dt>The return value must be a string!</dt>
+			<dt>Called by the repr() built-in function, which is typically used for debugging</dt>
+			<dt class="note">The return value must be a string!</dt>
 			<dt>if a class has only the __repr__ method and no __str__ method, __repr__ will be applied in the situations, where __str__would be applied</dt>
 		</dl>
 	</section>
@@ -613,7 +613,7 @@
   		<dt>LHS = RHS</dt>
   		<dd>The RHS value object is created somewhere in memory</dd>
   		<dd>The LHS is set to refer to that object</dd>
-  		<dt>LHS can be variables names or list items or dictionary values and so on.</dt>
+  		<!-- <dt>LHS can be variables names or list items or dictionary values and so on.</dt> -->
   	</dl>
   	<hr>
   	<abbr>LHS</abbr><dfn id="LHS"><span>Left </span><span>Hand </span><span>Side </span></dfn>; <abbr>RHS</abbr><dfn id="RHS"><span>Right </span><span>Hand </span><span>Side </span></dfn>
@@ -634,6 +634,7 @@
 <section data-min="5"><h1>Resources</h1></section>
 <section><h2>YouTube Videos</h2>
 	<section><h3>Python Classes and Objects - John Philip Jones</h3>
+		<p>Simple, a childish like, explained...</p>
 		<iframe src="https://www.youtube.com/embed/AaIdperUu-A?list=PL6lxxT7IdTxEloArZ2ZSRWCy5jQpD5VtT" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 	</section>
 </section>

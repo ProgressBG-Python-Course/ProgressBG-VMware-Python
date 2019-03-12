@@ -209,7 +209,7 @@
 <section><h2>Regex Match Methods</h2>
   <section><h3><a href="https://docs.python.org/3/library/re.html#re.regex.search">regex.search(string[, start[, end]]))</a></h3>
     <dl class="fa">
-      <dt>Scan through string looking for the first location where this regular expression produces a match.</dt>
+      <dt>Scan through string looking for the  where this regular expression produces a match.</dt>
       <dt>If match produced => returns a corresponding <a href="https://docs.python.org/3/library/re.html#match-objects">match object</a></dt>
       <dt>If string does not matches the pattern => return <span class="note">None</span></dt>
       <dt>optional parameters:</dt>
@@ -232,7 +232,9 @@
   <section><h3><a href="https://docs.python.org/3/library/re.html#re.regex.match">regex.match(string[, start[, end]])</a></h3>
     <dl class="fa">
       <dt>Matches only <span class="note">on the beginning of the string</span></dt>
-      <dt>For the rest - acts like regex.search() method</dt>
+      <dt>If you want to locate a match anywhere in string, use search() instead</dt>
+      <dt>Reference: <a href="https://docs.python.org/3/library/re.html#search-vs-match">search-vs-match @python docs</a></dt>
+      <!-- <dt>For the rest - acts like regex.search() method</dt> -->
     </dl>
   </section>
   <section><h3><a href="https://docs.python.org/3/library/re.html#re.regex.match">regex.match(string[, start[, end]])</a> - example</h3>

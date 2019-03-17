@@ -309,6 +309,23 @@
 			    print(f.read())
 		</code></pre>
 	</section>
+	<section><h3>base64.b64encode demo</h3>
+		<p><a href="https://docs.python.org/3/library/base64.html#base64.b64encode">base64.b64encode</a></p>
+		<pre><code rel="Python3" class="python">
+			import base64
+
+			passwd = 'abracadabra'
+
+			# base64 needs a byte string
+			# encoded = base64.b64encode(b'data to be encoded')
+
+			passwd_bytes = passwd.encode()
+			passwd_b64 = base64.b64encode(passwd_bytes)
+
+			print(f'passwd_b64: {passwd_b64}')
+			# passwd_b64: b'YWJyYWNhZGFicmE='
+		</code></pre>
+	</section>
 </section>
 
 <!-- <section><h1>___MainSectionTitle___</h1></section>

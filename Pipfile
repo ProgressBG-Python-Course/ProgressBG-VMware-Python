@@ -8,6 +8,8 @@ bpython = "*"
 
 [packages]
 numpy = "*"
+jupyter = "*"
+pandas = "*"
 
 [requires]
 python_version = "3.7"

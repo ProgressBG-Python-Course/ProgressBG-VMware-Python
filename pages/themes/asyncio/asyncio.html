@@ -95,7 +95,7 @@
   </section>
   <section><h3>Subroutines vs Coroutines</h3>
     <dl class="fa">
-      <dt><span class="note">Subroutine</span>: An instance of a <span class="note"></span> only returns once, and <span class="note">does not hold state between invocations</span></dt>
+      <dt><span class="note">Subroutine</span>: An instance of a subroutine have single entry point and only returns once. A subroutine <span class="note">does not hold state between invocations</span></dt>
       <dt><span class="note">Coroutine</span>: can exit by calling other coroutines, which may later return to the point where they were invoked in the original coroutine. <span class="note">A coroutine instance holds state</span></dt>
       <dt class="note">Synchronous and Asynchronous functions/callables are different types - you can't just mix and match them</dt>
     </dl>
@@ -138,7 +138,68 @@
       <dd>Delegating costly function calls to a pool of threads.</dd>
     </dl>
   </section>
-  <section><h3>simple example</h3></section>
+  <!-- <section><h3>simple example</h3></section> -->
+</section>
+
+<section data-min="5"><h1>Async vs Sync example</h1></section>
+<section><h2>Async vs Sync example</h2>
+  <section><h3>Sync subroutines execution</h3>
+    <pre><code rel="sync_subroutines.py" class="python">
+      import time
+
+      def subroutine_A():
+        print('subroutine_A starts!')
+        time.sleep(3)
+        print('subroutine_A completed!')
+
+      def subroutine_B():
+        print('subroutine_B starts!')
+        time.sleep(2)
+        print('subroutine_B completed!')
+
+      def main():
+        subroutine_A()
+        subroutine_B()
+
+
+      time_start = time.time()
+      main()
+      time_end = time.time()
+
+      print(f'Took {time_end - time_start}')
+    </code></pre>
+  </section>
+  <section><h3>Async coroutines execution</h3>
+    <pre><code rel="sync_subroutines.py" class="python">
+      import asyncio
+      import time
+
+      async def coroutine_A():
+        print('coroutine_A starts!')
+        await asyncio.sleep(3)
+        print('coroutine_A completed!')
+
+      async def coroutine_B():
+        print('coroutine_B starts!')
+        await asyncio.sleep(2)
+        print('coroutine_B completed!')
+
+      def main():
+        loop = asyncio.get_event_loop()
+        tasks = asyncio.gather(
+          coroutine_A(),
+          coroutine_B()
+        )
+        loop.run_until_complete(tasks)
+        loop.close()
+
+      time_start = time.time()
+      main()
+      time_end = time.time()
+
+      print(f'Took {time_end - time_start}')
+    </code></pre>
+  </section>
 </section>
 
 
@@ -233,6 +294,15 @@
 		loop = asyncio.get_event_loop()
 		loop.run_until_complete(do_request())
 	</code></pre>
+</section>
+
+<section data-min="5"><h1>Resources</h1></section>
+<section><h2>Resources</h2>
+  <section>
+    <dl class="fa">
+      <dt><a href="https://realpython.com/async-io-python/">Async IO in Python: A Complete Walkthrough</a></dt>
+    </dl>
+  </section>
 </section>
 
 <!--

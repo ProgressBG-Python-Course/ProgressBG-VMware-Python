@@ -46,7 +46,7 @@
 ##################### SLIDES START #####################
 ########################################################
 -->
-<section><h1>Web Programming With Django</h1></section>
+<section><h1>Web Programming with Python</h1></section>
 <section data-transition="zoom">
 	<!-- linkedin badge -->
 	<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
@@ -72,8 +72,8 @@
 </section>
 
 
-<section><h1>Introduction</h1></section>
-<section><h2>Introduction</h2>
+<section><h1>Django - Introduction</h1></section>
+<section><h2>Django - Introduction</h2>
 	<section><h3>What is Django?</h3>
 		<blockquote cite="https://www.djangoproject.com/">Django is a high-level Python <span class="note">Web framework</span> that encourages rapid development and clean, pragmatic design. Built by experienced developers, it takes care of much of the hassle of Web development, so you can focus on writing your app without needing to reinvent the wheel. It’s free and open source</blockquote>
 		<p><a href="https://www.djangoproject.com/">Official Django Project Site</a></p>
@@ -92,8 +92,8 @@
 	</section>
 </section>
 
-<section><h1>Installation</h1></section>
-<section><h2>Installation</h2>
+<section><h1>Django - Installation</h1></section>
+<section><h2>Django - Installation</h2>
 	<section><h3>Prerequisites</h3>
 		<dl class="fa">
 			<dt>Python > 3.4</dt>
@@ -111,8 +111,8 @@
 	</section>
 </section>
 
-<section><h1>Set up the ToDoApp project</h1></section>
-<section><h2>Set up the ToDoApp project</h2>
+<section><h1>Django - set up the ToDoApp project</h1></section>
+<section><h2>Django - set up the ToDoApp project</h2>
 	<section><h3>Creating the project structure</h3>
 		<pre><code rel="Terminal" class="shell" data-noescape>
 			$ cd myprojects
@@ -168,8 +168,8 @@
 </section>
 
 
-<section><h1>Start the ToDoApp</h1></section>
-<section><h2>Start the ToDoApp</h2>
+<section><h1>Django - start the ToDoApp</h1></section>
+<section><h2>Django - start the ToDoApp</h2>
 	<section><h3>Create ToDoListComponent</h3>
 		<pre><code rel="Terminal" class="shell" data-noescape>
 			$ django-admin startapp ToDoListComponent
@@ -241,8 +241,8 @@
 </section>
 
 
-<section><h1>Database setup</h1></section>
-<section><h2>Database setup</h2>
+<section><h1>Django - database setup</h1></section>
+<section><h2>Django - database setup</h2>
 	<section><h3>Overview of SQLite</h3>
 		<dl class="fa">
 			<dt>SQLite is an in-process library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine</dt>
@@ -358,8 +358,8 @@
 	</section>
 </section>
 
-<section><h1>Introducing the Django Admin</h1></section>
-<section><h2>Introducing the Django Admin</h2>
+<section><h1>Django  - admin app overview</h1></section>
+<section><h2>Django  - admin app overview</h2>
 	<section><h3>Creating an admin user</h3>
 		<p>In root Project Folder (ToDoAppProject) type:</p>
 		<pre><code rel="Terminal" class="shell" data-noescape>
@@ -420,7 +420,7 @@
 	</section>
 </section>
 
-<section><h1>Query DB from our ToDoApp</h1>
+<section><h1>Django - query DB from our ToDoApp</h1>
 	<dl class="fa">
 		<dt>Change <code>ToDoListComponent/views.py</code> as:</dt>
 	</dl>
@@ -439,8 +439,8 @@
 </section>
 
 
-<section><h1>Add some Templates</h1></section>
-<section><h2>Add some Templates</h2>
+<section><h1>Django - add some Templates</h1></section>
+<section><h2>Django - add some Templates</h2>
 	<section><h3>task_list template</h3>
 		<dl class="fa">
 			<dt>In ToDoListComponent create a folder named <code>templates</code> and make the file <code>tasks_index.html</code> in it.</dt>
@@ -591,15 +591,8 @@
 	</section>
 </section>
 
-<!-- <section><h1>___MainSectionTitle___</h1></section>
-<section><h2>___MainSectionTitle___</h2>
-	<section><h3>___SubSectionTitle___</h3>
-
-	</section>
-</section> -->
-
-<section><h1>Useful Commands</h1></section>
-<section><h2>Useful Commands</h2>
+<section><h1>Django - useful Commands</h1></section>
+<section><h2>Django - useful Commands</h2>
 	<section><h3>Django</h3>
 		<dl class="fa">
 			<dt><span>Run Django Server</span></dt>
@@ -607,6 +600,69 @@
 		</dl>
 	</section>
 </section>
+
+<section data-min="30"><h1>Web Scrapping with Python</h1></section>
+<section><h2>Web Scrapping with Python</h2>
+  <section><h3>Get URL Content</h3>
+  	<dl class="fa">
+  		<dt><a href="https://docs.python.org/3/library/urllib.request.html#module-urllib.request">urllib.request — Extensible library for opening URLs</a></dt>
+  		<dd>The urllib.request module defines functions and classes which help in opening URLs (mostly HTTP) in a complex world — basic and digest authentication, redirections, cookies and more.</dd>
+  		<dt><a href="http://docs.python-requests.org/en/master/">Requests: HTTP for Humans</a></dt>
+  	</dl>
+  </section>
+  <section><h3><code>urllib.request</code> example</h3>
+  	<pre><code rel="Python" class="python">
+  		def get_html(url):
+  			if url.startswith("http"):
+  				# make the request - change UA to prevent server deny for scripts
+  				req = request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+
+  				# get response
+  				respone = request.urlopen(req)
+  				return respone.read()
+  			else:
+  				# for tests and debugs
+  				with open(url,"r") as f:
+  				  return f.read()
+  	</code></pre>
+  </section>
+  <section><h3>BeautifulSoup - overview</h3>
+  	<dl class="fa">
+  		<dt>Beautiful Soup is a Python library for pulling data out of HTML and XML files</dt>
+  		<dt><a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">BeautifulSoup Docs</a></dt>
+  		<dt>You have to install the module:</dt>
+  	</dl>
+  	<pre><code rel="Terminal" class="shell" data-noescape>
+  		pipenv install beautifulsoup4
+  	</code></pre>
+  </section>
+  <section><h3>BeautifulSoup - example</h3>
+  	<pre><code rel="Python" class="python">
+  		def scrape_data(page):
+  			bs_parser = BeautifulSoup(page, 'html.parser')
+  			products_html = bs_parser.find('ul', 'products')
+
+  			for product in products_html.find_all("article"):
+  				try:
+  					name = product.select("div h2")[0].string
+  				except:
+  					name = "NoName"
+
+  				try:
+  					price = product.select("div tspan")[0].string
+  				except:
+  					price = None
+
+  				products.append((name,int(price)))
+  	</code></pre>
+  </section>
+  <section><h3>The whole</h3>
+  	<p>You can play with the code on <a href="https://repl.it/@IvaPopova/laptopbg-scraper-with-BS4">laptopbg-scraper-with-BS4</a></p>
+  	<iframe style="height: 80vh; width: 90vw" src="https://repl.it/@IvaPopova/laptopbg-scraper-with-BS4?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+  </section>
+</section>
+
+
 
 <section><h1>Resources</h1></section>
 <section><h2>Resources</h2>
